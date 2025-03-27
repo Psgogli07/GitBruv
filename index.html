@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="script.js"></script>
+
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PairGame</title>
@@ -14,18 +14,18 @@
     <main>
         <section>
             <div id="difficulty">
-                <input type="radio" id="easy"  value="1">
+                <input type="radio" id="easy" name="difficulty" value="1">
                 <label for="easy">Könnyű</label><br>
-                <input type="radio" id="medium"  value="2">
+                <input type="radio" id="medium" name="difficulty" value="2">
                 <label for="medium">közepes</label><br>
-                <input type="radio" id="hard"  value="3">
+                <input type="radio" id="hard" name="difficulty" value="3">
                 <label for="hard">Nehéz</label>                           
             </div>
             <div id="kezdes">
-                <button>Start</button>
+                <button id="kezdo">Start</button>
             </div>  
             <div>
-                <ul>
+                <ul id="cards">
                     
                 </ul>
             </div>
@@ -34,5 +34,7 @@
     <footer>
 
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

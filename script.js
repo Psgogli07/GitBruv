@@ -1,29 +1,42 @@
 let difficulty = 0;
+let cardnumber = 0;
 
 label = document.querySelector("label")
 
 function StartGame(){
-
     GenerateCards();
 }
 
+
+
 function Difficulty(){
-    const diff = document.querySelector("#difficulty")
-    for (const input of diff) {
-        if(input.value == "3"){
-            difficulty = 3;
-        }
-        else if(input.value == "2"){
-            difficulty = 2;
-        }
-        else{
-            difficulty = 1;
+    const radios = document.getElementsByName("difficulty");
+    for (const radio of radios) {
+        if (radio.checked) {
+          difficulty = radio.value;
         }
     }
+
+    if(difficulty == 1){
+        cardnumber = 9
+    }else if(difficulty == 2){
+        cardnumber = 12
+    }
+    else if(difficulty == 3){
+        cardnumber = 15
+    }
+    StartGame();
 }
 
-function GenerateCards(){
 
+
+function GenerateCards(){
+    const cards = document.querySelector("#cards")
+    for(let i = 0; i < cardnumber; i++){
+        cards.innerHTML += `
+        <li> Kártya </li>
+        `
+    }
 }
 
 function MixCards(){
@@ -34,5 +47,5 @@ function NewGame(){
 
 }
 
-
-document.querySelector("button", StartGame())
+const button = document.querySelector("#kezdo");
+button.addEventListener("click", Difficulty);
