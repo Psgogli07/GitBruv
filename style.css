@@ -36,9 +36,12 @@ ul li {
     display:none
 }
 
-img {
-    object-fit: cover;
-    width: 50px;
-    height: 100px;
- }
+
+#Maindiv{
+    width: 60%;
+    display: block;
+    margin: auto;
+}
+
+
  

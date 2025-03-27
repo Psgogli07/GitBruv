@@ -37,12 +37,11 @@ function randint(a, b) {
 function GenerateCards(){
     const cards = document.querySelector("#cards")
     cards.innerHTML = ``;
-    let nums = (1,2,3,4,5,6,7)
     for(let i = 0; i < cardnumber/2; i++){
-        let ran = randint(1,nums.Count())
+        let ran = randint(1,7)
         cards.innerHTML += `
-        <li> <img src="Kepek/${ran}.png"></li>
-        <li> <img src="Kepek/${ran}.png"></li>
+        <li style="background-image:url(Kepek/${ran}.png);"></li>
+         <li style="background-image:url(Kepek/${ran}.png);"></li>
         `
     }
 
