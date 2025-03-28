@@ -6,17 +6,6 @@ label = document.querySelector("label")
 function StartGame(){
     GenerateCards();
     document.querySelector("#noshowdiv").classList.add("noshowcss")
-    StartCards();
-    Game();
-}
-
-
-function Game(){
-    console.log("JATEK KEZDETE")
-}
-
-function StartCards(){
-
 }
 
 
@@ -47,20 +36,28 @@ function randint(a, b) {
 function GenerateCards(){
     const cards = document.querySelector("#cards")
     cards.innerHTML = ``;
-    let temp = [1,2,3,4,5,6,7];
-    for(let i = 0; i < cardnumber/2; i++){
-        let ran = randint(temp[0],temp.length)
-        temp.splice(temp.indexOf(ran) + 1)
-        cards.innerHTML += `
-        <li style="background-image:url(Kepek/${ran}.png);"></li>
-         <li style="background-image:url(Kepek/${ran}.png);"></li>
-        `
-    }
+    let cardsarray = [];
+    for(let i = 1; i < cardnumber/2+1; i++){
+        
+        //cards.innerHTML += `
+        //<li style="background-image:url(Kepek/${i}.png);"></li>
+        //<li style="background-image:url(Kepek/${i}.png);"></li>
+        //`
+        
+        cardsarray.push(`<li style="background-image:url(Kepek/${i}.png);"></li>`)
+        cardsarray.push(`<li style="background-image:url(Kepek/${i}.png);"></li>`)
 
+    }
+    MixCards(cardsarray);
 }
 
-function MixCards(){
-    console.log("");
+function MixCards(array){
+    
+    for(let i = 0; i < array.length; i++){
+        let ran = randint(i+1, array.length)
+        let rannum = array[ran];
+        array[i] = `<li style="background-image:url(Kepek/${}.png);"></li>`;
+    }
 }
 
 const button = document.querySelector("#kezdo");
