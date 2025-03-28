@@ -6,8 +6,18 @@ label = document.querySelector("label")
 function StartGame(){
     GenerateCards();
     document.querySelector("#noshowdiv").classList.add("noshowcss")
+    StartCards();
+    Game();
 }
 
+
+function Game(){
+    console.log("JATEK KEZDETE")
+}
+
+function StartCards(){
+
+}
 
 
 function Difficulty(){
@@ -37,8 +47,10 @@ function randint(a, b) {
 function GenerateCards(){
     const cards = document.querySelector("#cards")
     cards.innerHTML = ``;
+    let temp = [1,2,3,4,5,6,7];
     for(let i = 0; i < cardnumber/2; i++){
-        let ran = randint(1,7)
+        let ran = randint(temp[0],temp.length)
+        temp.splice(temp.indexOf(ran) + 1)
         cards.innerHTML += `
         <li style="background-image:url(Kepek/${ran}.png);"></li>
          <li style="background-image:url(Kepek/${ran}.png);"></li>
