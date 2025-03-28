@@ -53,9 +53,10 @@ function GenerateCards(){
 
 function MixCards(array){
     
-    for(let i = 0; i < array.length; i++){
+    for(let i = 0; i < array.length-1; i++){
         let ran = randint(i+1, array.length)
         let ranli = array[ran];
+        array[ran] = array[i]
         array[i] = ranli;
     }
     console.log(array)
