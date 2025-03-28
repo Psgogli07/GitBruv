@@ -55,9 +55,10 @@ function MixCards(array){
     
     for(let i = 0; i < array.length; i++){
         let ran = randint(i+1, array.length)
-        let rannum = array[ran];
-        array[i] = `<li style="background-image:url(Kepek/${}.png);"></li>`;
+        let ranli = array[ran];
+        array[i] = ranli;
     }
+    console.log(array)
 }
 
 const button = document.querySelector("#kezdo");
