@@ -46,9 +46,7 @@ function GenerateCards(){
         cardsarray.push(`<li style="background-image:url(Kepek/${i}.png);"></li>`)
 
     }
-    //MixCards(cardsarray);
-    const MixCards = MixCards(cardsarray)
-    ShowCards(array)
+    MixCards(cardsarray);
 }
 
 function MixCards(array){
@@ -59,15 +57,15 @@ function MixCards(array){
         array[i] = array[ran];
         array[ran] = temp;
     }
-    
-    return array;
+    ShowCards(array)
 }
 
 function ShowCards(cardsarray){
     const cards = document.querySelector("#cards")
     cards.innerHTML = ``;
-    for(i = 0; i < cards.length; i++){
-        cards.innerHTML = cardsarray[i]
+    for(i = 0; i < cardsarray.length; i++){
+        console.log(cardsarray[i])
+        cards.innerHTML += cardsarray[i]
     }
 }
 
