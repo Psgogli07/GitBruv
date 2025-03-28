@@ -34,8 +34,6 @@ function randint(a, b) {
 }
 
 function GenerateCards(){
-    const cards = document.querySelector("#cards")
-    cards.innerHTML = ``;
     let cardsarray = [];
     for(let i = 1; i < cardnumber/2+1; i++){
         
@@ -48,17 +46,29 @@ function GenerateCards(){
         cardsarray.push(`<li style="background-image:url(Kepek/${i}.png);"></li>`)
 
     }
-    MixCards(cardsarray);
+    //MixCards(cardsarray);
+    const MixCards = MixCards(cardsarray)
+    ShowCards(array)
 }
 
 function MixCards(array){
     
-    for(let i = 0; i < array.length; i++){
-        let ran = randint(i+1, array.length)
-        let ranli = array[ran];
-        array[i] = ranli;
+    for (let i = 0; i < array.length - 1; i++) {
+        let ran = randint(i + 1, array.length - 1);
+        let temp = array[i];
+        array[i] = array[ran];
+        array[ran] = temp;
     }
-    console.log(array)
+    
+    return array;
+}
+
+function ShowCards(cardsarray){
+    const cards = document.querySelector("#cards")
+    cards.innerHTML = ``;
+    for(i = 0; i < cards.length; i++){
+        cards.innerHTML = cardsarray[i]
+    }
 }
 
 const button = document.querySelector("#kezdo");
