@@ -1,11 +1,21 @@
 let difficulty = 0;
 let cardnumber = 0;
-
 label = document.querySelector("label")
 
+
 function StartGame(){
+    const ul = document.querySelector("ul");
+    ul.addEventListener("click", handleClick);  
     GenerateCards();
     document.querySelector("#noshowdiv").classList.add("noshowcss")
+}
+
+function handleClick(e) {
+    const li = e.target;
+    if(li == e.target){
+        
+    }
+
 }
 
 
@@ -36,10 +46,8 @@ function randint(a, b) {
 function GenerateCards(){
     let cardsarray = [];
     for(let i = 1; i < cardnumber/2+1; i++){
-        
         cardsarray.push(`<li style="background-image:url(Kepek/${i}.png);"></li>`)
         cardsarray.push(`<li style="background-image:url(Kepek/${i}.png);"></li>`)
-
     }
     MixCards(cardsarray);
 }
