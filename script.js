@@ -9,13 +9,33 @@ function StartGame(){
     document.querySelector("#noshowdiv").classList.add("noshowcss")
 }
 
+let first = null;
+let second = null;
+
 function handleClick(e) {
     const li = e.target;
-    if(li == e.target){
-        console.log("jo")
+
+    if (li.matches("ul li")) {
+        if (!first) {
+            first = li;
+            first.classList.add("selected");
+        }
+        else if (!second) {
+            second = li;
+            second.classList.add("selected");
+
+            if (first.innerText === second.innerText) {
+                console.log("Matched:", first, second);
+
+                first.classList.add("matched");
+                second.classList.add("matched");
+
+                first = null;
+                second = null;
+            }
+        }
     }
 }
-
 
 function Difficulty(){
     const radios = document.getElementsByName("difficulty");
@@ -44,8 +64,8 @@ function randint(a, b) {
 function GenerateCards(){
     let cardsarray = [];
     for(let i = 1; i < cardnumber/2+1; i++){
-        cardsarray.push(`<li style="background-image:url(Kepek/${i}.png);"></li>`)
-        cardsarray.push(`<li style="background-image:url(Kepek/${i}.png);"></li>`)
+        cardsarray.push(i)
+        cardsarray.push(i)
     }
     MixCards(cardsarray);
 }
@@ -65,8 +85,8 @@ function ShowCards(cardsarray){
     const cards = document.querySelector("#cards")
     cards.innerHTML = ``;
     for(i = 0; i < cardsarray.length; i++){
-        console.log(cardsarray[i])
-        cards.innerHTML += cardsarray[i]
+        console.log(`<li style="background-image:url(Kepek/${cardsarray[i]}.png);">${cardsarray[i]}</li>`)
+        cards.innerHTML += `<li style="background-image:url(Kepek/${cardsarray[i]}.png);">${cardsarray[i]}</li>`
     }
 }
 
