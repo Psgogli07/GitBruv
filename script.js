@@ -2,11 +2,15 @@ let difficulty = 0;
 let cardnumber = 0;
 label = document.querySelector("label")
 
+
 function StartGame(){
-    const ul = document.querySelector("ul");
-    ul.addEventListener("click", handleClick);  
-    GenerateCards();
-    document.querySelector("#noshowdiv").classList.add("noshowcss")
+    if(difficulty != 0){
+        const ul = document.querySelector("ul");
+        ul.addEventListener("click", handleClick);  
+        GenerateCards();
+        document.querySelector("#noshowdiv").classList.add("noshowcss")
+    }
+   
 }
 
 let first = null;
@@ -14,21 +18,28 @@ let second = null;
 
 function handleClick(e) {
     const li = e.target;
-    if (li.matches("ul li")) {
+    if (li.matches("ul li img")) {
         
         if (!first) {
             first = li; 
+            console.log(first);
         }
         else if (!second) {
             second = li;  
 
-            if (first.children[0].src === second.children[0].src) {
+            if (first.src === second.src) {
                 console.log("jo:", first, second);
+                first = null;
+                second = null;
+            }
+            else{
+                console.log("nemjo:", first, second);
                 first = null;
                 second = null;
             }
         }
     }
+
 }
   
 
@@ -66,7 +77,6 @@ function GenerateCards(){
 }
 
 function MixCards(array){
-    
     for (let i = 0; i < array.length - 1; i++) {
         let ran = randint(i + 1, array.length - 1);
         let temp = array[i];
@@ -80,8 +90,8 @@ function ShowCards(cardsarray){
     const cards = document.querySelector("#cards")
     cards.innerHTML = ``;
     for(i = 0; i < cardsarray.length; i++){
-        console.log(`<li style="background-image:url(Kepek/${cardsarray[i]}.png);"></li>`)
-        cards.innerHTML += `<li style="background-image:url(Kepek/${cardsarray[i]}.png);"></li>`
+        console.log(`<li><img src="Kepek/${cardsarray[i]}.png"></li>`)
+        cards.innerHTML += `<li><img src="Kepek/${cardsarray[i]}.png"></li>`
     }
 }
 
