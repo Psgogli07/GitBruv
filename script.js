@@ -18,24 +18,21 @@ let second = null;
 
 function handleClick(e) {
     const li = e.target;
-    //const ul = document.querySelector("#cards") 
-    //console.log(ul.childNodes);
-
     if (li.matches("ul li img")) {
         
         if (!first) {
             first = li;            
-            //let li_index_first = ul.child
             console.log(first);
+            first.classList.add("first")
         }
         else if (!second) {
             second = li;  
 
-            if (first.src === second.src) {
+            if (first.src === second.src && !(second.classList.contains("first"))) {
                 console.log("jo:", first, second);
                 first = null;
                 second = null;
-            }
+            }            
             else{
                 console.log("nemjo:", first, second);
                 first = null;
