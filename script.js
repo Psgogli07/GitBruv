@@ -3,7 +3,9 @@ let cardnumber = 0;
 label = document.querySelector("label")
 
 
+
 function StartGame(){
+
     if(difficulty != 0){
         const ul = document.querySelector("ul");
         ul.addEventListener("click", handleClick);  
@@ -11,6 +13,18 @@ function StartGame(){
         document.querySelector("#noshowdiv").classList.add("noshowcss")
     }
    
+}
+
+function unflip() {
+    setTimeout(() => {
+      first.parentNode.classList.remove("front");
+      second.parentNode.classList.remove("front");
+      first.parentNode.classList.add("back")
+      second.parentNode.classList.add("back");
+
+      first = null;
+    second = null;
+    }, 1500);
 }
 
 let first = null;
@@ -21,24 +35,27 @@ function handleClick(e) {
     if (li.matches("ul li img")) {
         
         if (!first) {
-            first = li; 
+            first = li;            
             console.log(first);
-            first.classList.add("selected")
+            first.parentNode.classList.remove("back")
+            first.classList.add("first")
+            first.parentNode.classList.add("front")  
+
         }
         else if (!second) {
             second = li;
-            second.classList.add("selected")  
+            second.parentNode.classList.remove("back")
+            second.parentNode.classList.add("front") 
+            
 
-            if (first.src === second.src) {
+            if (first.src === second.src && !(second.classList.contains("first"))) {
                 console.log("jo:", first, second);
-
-                first = null;
-                second = null;
-            }
+                unflip();
+            }            
             else{
                 console.log("nemjo:", first, second);
-                first = null;
-                second = null;
+                unflip();
+                
             }
         }
     }
@@ -94,7 +111,7 @@ function ShowCards(cardsarray){
     cards.innerHTML = ``;
     for(i = 0; i < cardsarray.length; i++){
         console.log(`<li><img src="Kepek/${cardsarray[i]}.png"></li>`)
-        cards.innerHTML += `<li><img src="Kepek/${cardsarray[i]}.png"></li>`
+        cards.innerHTML += `<li class="back"><img src="Kepek/${cardsarray[i]}.png" ></li>`
     }
 }
 

@@ -53,5 +53,18 @@ ul li img{
     margin: auto;
 }
 
+.back {
+    background-color: black;
+}
 
- 
+.back img {
+    opacity: 0%;
+}
+
+.front img{
+    opacity: 100%;
+}
+
+.front{
+    background-color: transparent;
+}
