@@ -14,28 +14,23 @@ let second = null;
 
 function handleClick(e) {
     const li = e.target;
-
     if (li.matches("ul li")) {
+        
         if (!first) {
-            first = li;
-            first.classList.add("selected");
+            first = li; 
         }
         else if (!second) {
-            second = li;
-            second.classList.add("selected");
+            second = li;  
 
-            if (first.innerText === second.innerText) {
-                console.log("Matched:", first, second);
-
-                first.classList.add("matched");
-                second.classList.add("matched");
-
+            if (first.children[0].src === second.children[0].src) {
+                console.log("jo:", first, second);
                 first = null;
                 second = null;
             }
         }
     }
 }
+  
 
 function Difficulty(){
     const radios = document.getElementsByName("difficulty");
@@ -85,8 +80,8 @@ function ShowCards(cardsarray){
     const cards = document.querySelector("#cards")
     cards.innerHTML = ``;
     for(i = 0; i < cardsarray.length; i++){
-        console.log(`<li style="background-image:url(Kepek/${cardsarray[i]}.png);">${cardsarray[i]}</li>`)
-        cards.innerHTML += `<li style="background-image:url(Kepek/${cardsarray[i]}.png);">${cardsarray[i]}</li>`
+        console.log(`<li style="background-image:url(Kepek/${cardsarray[i]}.png);"></li>`)
+        cards.innerHTML += `<li style="background-image:url(Kepek/${cardsarray[i]}.png);"></li>`
     }
 }
 
