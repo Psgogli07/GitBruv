@@ -1,8 +1,4 @@
 
-#dificulty{
-
-}
-
 #kezdes button{
     margin: auto;
     display: block;
@@ -18,19 +14,26 @@ ul {
     list-style: none;
 }
 
+#selected{
+    size: 50%;
+}
+
 ul li {
-    background-color: #e0e0e0;
+    width: 200px;
+    height: 200px;
     padding: 20px;
     cursor: pointer;
-    border-radius: 8px;
-    transition: transform 0.5s, opacity 0.5s;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 150px;
-    background-position: center;
-    
+    /*align-items: center;
+    height: 150px;*/    
 }
+
+ul li img{
+    max-width: 100%;
+}
+
+
 
 .noshowcss {
     display:none
