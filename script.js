@@ -18,10 +18,14 @@ let second = null;
 
 function handleClick(e) {
     const li = e.target;
+    //const ul = document.querySelector("#cards") 
+    //console.log(ul.childNodes);
+
     if (li.matches("ul li img")) {
         
         if (!first) {
-            first = li; 
+            first = li;            
+            //let li_index_first = ul.child
             console.log(first);
         }
         else if (!second) {
