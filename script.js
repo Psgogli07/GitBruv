@@ -49,9 +49,15 @@ function handleClick(e) {
             
 
             if (first.src === second.src && !(second.classList.contains("first"))) {
-                console.log("jo:", first, second);
+                console.log("jo:", first, second);                
                 unflip();
             }            
+
+              
+            else if (first.src === second.src && second.classList.contains("first")) {
+                console.log("ugyan az a kártya");
+                second = null;      
+            }          
             else{
                 console.log("nemjo:", first, second);
                 unflip();
@@ -59,7 +65,6 @@ function handleClick(e) {
             }
         }
     }
-
 }
   
 
