@@ -23,12 +23,15 @@ function handleClick(e) {
         if (!first) {
             first = li; 
             console.log(first);
+            first.classList.add("selected")
         }
         else if (!second) {
-            second = li;  
+            second = li;
+            second.classList.add("selected")  
 
             if (first.src === second.src) {
                 console.log("jo:", first, second);
+
                 first = null;
                 second = null;
             }
