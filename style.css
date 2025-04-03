@@ -25,7 +25,7 @@ ul {
 
 ul li {
     width: 200px;
-    height: 200px;
+    height: 300px;
     gap: 20px;
     padding: 0%;
     cursor: pointer;
@@ -34,6 +34,7 @@ ul li {
     /*align-items: center;
     height: 150px;*/    
     overflow: hidden;
+    border-radius: 15%;
 }
 
 ul li img{

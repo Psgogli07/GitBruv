@@ -50,8 +50,10 @@ function handleClick(e) {
 
             if (first.src === second.src && !(second.classList.contains("first_card"))) {
                 console.log("jo:", first, second);    
-                first.classList.remove("first_card");       
-                unflip();
+                first.classList.remove("first_card");   
+                //first.classList.add("front")
+                //second.classList.add("front")    
+                //unflip();
             }            
 
               
