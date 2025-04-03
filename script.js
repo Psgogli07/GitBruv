@@ -38,7 +38,7 @@ function handleClick(e) {
             first = li;            
             console.log(first);
             first.parentNode.classList.remove("back")
-            first.classList.add("first")
+            first.classList.add("first_card")
             first.parentNode.classList.add("front")  
 
         }
@@ -48,20 +48,21 @@ function handleClick(e) {
             second.parentNode.classList.add("front") 
             
 
-            if (first.src === second.src && !(second.classList.contains("first"))) {
-                console.log("jo:", first, second);                
+            if (first.src === second.src && !(second.classList.contains("first_card"))) {
+                console.log("jo:", first, second);    
+                first.classList.remove("first_card");       
                 unflip();
             }            
 
               
-            else if (first.src === second.src && second.classList.contains("first")) {
+            else if (first.src === second.src && second.classList.contains("first_card")) {
                 console.log("ugyan az a kártya");
                 second = null;      
             }          
             else{
+                first.classList.remove("first_card");
                 console.log("nemjo:", first, second);
-                unflip();
-                
+                unflip();    
             }
         }
     }
