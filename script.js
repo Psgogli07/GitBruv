@@ -17,14 +17,18 @@ function StartGame(){
 
 function unflip() {
     setTimeout(() => {
-      first.parentNode.classList.remove("front");
-      second.parentNode.classList.remove("front");
-      first.parentNode.classList.add("back")
-      second.parentNode.classList.add("back");
+        first.parentNode.classList.remove("flipped");    
+        first.parentNode.classList.remove("front");
+        first.parentNode.classList.add("back")
+
+        second.parentNode.classList.remove("flipped");
+        second.parentNode.classList.remove("front");
+        second.parentNode.classList.add("back");           
+
 
       first = null;
     second = null;
-    }, 1500);
+    }, 1000);
 }
 
 let first = null;
@@ -40,17 +44,28 @@ function handleClick(e) {
             first.parentNode.classList.remove("back")
             first.classList.add("first_card")
             first.parentNode.classList.add("front")  
+            first.parentNode.classList.add("flipped")  
 
         }
         else if (!second) {
             second = li;
             second.parentNode.classList.remove("back")
             second.parentNode.classList.add("front") 
+            second.parentNode.classList.add("flipped") 
             
 
             if (first.src === second.src && !(second.classList.contains("first_card"))) {
                 console.log("jo:", first, second);    
-                first.classList.remove("first_card");   
+                first.classList.remove("first_card");
+                // found_cards = document.querySelectorAll(".front")
+                // found_cards[0].innerHTML = "";
+                // found_cards[1].innerHTML = "";
+                // first.classList.remove("front")                    <------ eltűnés de bugos
+                // second.classList.remove("front")
+                // second.classList.add("back")
+                // second.classList.add("back")
+                first = null;
+                second = null;
                 //first.classList.add("front")
                 //second.classList.add("front")    
                 //unflip();
@@ -119,7 +134,7 @@ function ShowCards(cardsarray){
     cards.innerHTML = ``;
     for(i = 0; i < cardsarray.length; i++){
         console.log(`<li><img src="Kepek/${cardsarray[i]}.png"></li>`)
-        cards.innerHTML += `<li class="back"><img src="Kepek/${cardsarray[i]}.png" ></li>`
+        cards.innerHTML += `<li class="back"><img src="Kepek/${cardsarray[i]}.png"></li>`
     }
 }
 

@@ -26,46 +26,40 @@ ul {
 ul li {
     width: 200px;
     height: 300px;
-    gap: 20px;
-    padding: 0%;
     cursor: pointer;
     display: flex;
     justify-content: center;
-    /*align-items: center;
-    height: 150px;*/    
+    align-items: center;
     overflow: hidden;
     border-radius: 15%;
-}
-
-ul li img{
-    width: 200px;
-}
-
-
-
-.noshowcss {
-    display:none
-}
-
-
-#Maindiv{
-    width: 60%;
-    display: block;
-    margin: auto;
-}
-
-.back {
-    background-color: black;
-}
-
-.back img {
-    opacity: 0%;
-}
-
-.front img{
-    opacity: 100%;
-}
-
-.front{
-    background-color: transparent;
-}
+    margin: 1em;
+    perspective: 1000px; /* 3D perspektíva */
+    transform-style: preserve-3d; /* Megőrzi a 3D térhatást */
+    transition: transform 0.6s; /* Animáljuk a forgatást */
+    background-color: #606060; /* Alap szürke háttér */
+  }
+  
+  ul li img {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Az elforgatott oldal elrejtése */
+    position: absolute; /* Az img pozicionálása a szülő elemhez képest */
+    transition: opacity 0.3s ease-in-out; /* Animáljuk az áttűnést */
+  }
+  
+  /* Az előlap kezdetben nem látszik */
+  ul li img.front {
+    opacity: 0;
+  }
+  
+  /* A kártya elforgatása */
+  ul li.flipped {
+    transform: rotateY(180deg); /* Elforgatjuk 180 fokkal */
+  }
+  
+  /* Amikor a kártya elforog, az előlap láthatóvá válik */
+  ul li.flipped img.front {
+    opacity: 1;
+  }
+  
+  
