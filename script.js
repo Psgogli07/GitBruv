@@ -36,10 +36,13 @@ let second = null;
 
 function handleClick(e) {
     const li = e.target;
-    if (li.matches("ul li img")) {
+    console.log(li);
+    if (li.matches("ul li")) {
         
+        const img = li.children[0];
+
         if (!first) {
-            first = li;            
+            first = img;            
             console.log(first);
             first.parentNode.classList.remove("back")
             first.classList.add("first_card")
@@ -48,7 +51,7 @@ function handleClick(e) {
 
         }
         else if (!second) {
-            second = li;
+            second = img;
             second.parentNode.classList.remove("back")
             second.parentNode.classList.add("front") 
             second.parentNode.classList.add("flipped") 
@@ -57,18 +60,8 @@ function handleClick(e) {
             if (first.src === second.src && !(second.classList.contains("first_card"))) {
                 console.log("jo:", first, second);    
                 first.classList.remove("first_card");
-                // found_cards = document.querySelectorAll(".front")
-                // found_cards[0].innerHTML = "";
-                // found_cards[1].innerHTML = "";
-                // first.classList.remove("front")                    <------ eltűnés de bugos
-                // second.classList.remove("front")
-                // second.classList.add("back")
-                // second.classList.add("back")
                 first = null;
                 second = null;
-                //first.classList.add("front")
-                //second.classList.add("front")    
-                //unflip();
             }            
 
               
@@ -123,7 +116,7 @@ function MixCards(array){
     for (let i = 0; i < array.length - 1; i++) {
         let ran = randint(i + 1, array.length - 1);
         let temp = array[i];
-        array[i] = array[ran];
+        array[i] = array[ran]; 
         array[ran] = temp;
     }
     ShowCards(array)
@@ -134,7 +127,7 @@ function ShowCards(cardsarray){
     cards.innerHTML = ``;
     for(i = 0; i < cardsarray.length; i++){
         console.log(`<li><img src="Kepek/${cardsarray[i]}.png"></li>`)
-        cards.innerHTML += `<li class="back"><img src="Kepek/${cardsarray[i]}.png"></li>`
+        cards.innerHTML += `<li class="back"><img src="Kepek/${cardsarray[i]}.png"> <div></div> </li>`
     }
 }
 

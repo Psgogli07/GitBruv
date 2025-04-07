@@ -1,65 +1,74 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#kezdes button{
-    margin: auto;
-    display: block;
+#kezdes button {
+  margin: auto;
+  display: block;
 }
 
 
 ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-#selected{
-    size: 50%;
+#selected {
+  size: 50%;
 }
 
 ul li {
-    width: 200px;
-    height: 300px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border-radius: 15%;
-    margin: 1em;
-    perspective: 1000px; /* 3D perspektíva */
-    transform-style: preserve-3d; /* Megőrzi a 3D térhatást */
-    transition: transform 0.6s; /* Animáljuk a forgatást */
-    background-color: #606060; /* Alap szürke háttér */
-  }
-  
-  ul li img {
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Az elforgatott oldal elrejtése */
-    position: absolute; /* Az img pozicionálása a szülő elemhez képest */
-    transition: opacity 0.3s ease-in-out; /* Animáljuk az áttűnést */
-  }
-  
-  /* Az előlap kezdetben nem látszik */
-  ul li img.front {
-    opacity: 0;
-  }
-  
-  /* A kártya elforgatása */
-  ul li.flipped {
-    transform: rotateY(180deg); /* Elforgatjuk 180 fokkal */
-  }
-  
-  /* Amikor a kártya elforog, az előlap láthatóvá válik */
-  ul li.flipped img.front {
-    opacity: 1;
-  }
-  
-  
+  width: 200px;
+  height: 300px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 15%;
+  margin: 1em;
+  /* perspective: 1000px;
+    transform-style: preserve-3d; */
+}
+
+ul li img {
+  transform: rotateY(90deg);
+  /* transition: transform 0.6s; */
+  width: 100%;
+  height: 100%;
+  /* backface-visibility: hidden; 
+    position: absolute; */
+  /* transition: opacity 0.3s ease-in-out;  */
+}
+
+ul li div {
+  width: 100%;
+  height: 100%;
+  background-color: #606060;
+}
+
+.back {
+  background-color: #606060;
+}
+
+
+ul li img.front {
+  opacity: 0;
+}
+
+
+ul li.flipped img, ul li.flipped div{
+  transform: rotateY(90deg);
+  transition: transform 0.6s;
+}
+
+
+ul li.flipped img.front {
+  opacity: 1;
+}
