@@ -23,7 +23,7 @@ ul {
   size: 50%;
 }
 
-ul li {
+/*ul li {
   width: 200px;
   height: 300px;
   cursor: pointer;
@@ -33,40 +33,59 @@ ul li {
   overflow: hidden;
   border-radius: 15%;
   margin: 1em;
-  perspective: 1000px;
+  position: relative;
   transform-style: preserve-3d;
 }
 
 ul li img {
-  transform: rotateY(90deg);
   transition: transform 0.6s; 
   width: 100%;
   height: 100%;
-  /* backface-visibility: hidden; 
-    position: absolute; */
-  /* transition: opacity 0.3s ease-in-out;  */
+  backface-visibility: hidden; 
+  position: absolute;
+  transition: opacity 0.3s ease-in-out;
 }
 
 ul li div {
   width: 100%;
   height: 100%;
-  background-color: #606060;  
+  outline: 1px solid black;;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 1s;
+}
+*/
+
+
+.card {
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d; /* 3D animáció */
+  overflow: hidden;
+}
+
+.card * {
+  /*outline: 1px solid black;;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+  transition: transform 1s;
 }
 
 .back {
-  background-color: #606060;
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden; /* Másik oldal */
 }
 
-
-ul li img.front {
-  opacity: 0;
+.front {
+  position: absolute;
+  inset: 0;
+  background-color: bisque;
+  backface-visibility: hidden;
 }
 
-
-ul li.flipped img, ul li.flipped div{
-  transition: transform 0.6s;
-  transform: rotateY(-90deg);
-  
+.flipped{
+  transform: rotateY(180deg);
 }
 
 ul li.flipped img.front {

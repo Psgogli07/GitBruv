@@ -8,75 +8,43 @@ function StartGame(){
 
     if(difficulty != 0){
         const ul = document.querySelector("ul");
-        ul.addEventListener("click", handleClick);  
+        ul.addEventListener("click", handleFlip);  
         GenerateCards();
         document.querySelector("#noshowdiv").classList.add("noshowcss")
     }
    
 }
 
-function unflip() {
-    setTimeout(() => {
-        first.parentNode.classList.remove("flipped");    
-        first.parentNode.classList.remove("front");
-        first.parentNode.classList.add("back")
+// function unflip() {
+//     setTimeout(() => {
+//         first.parentNode.classList.remove("flipped");    
+//         first.parentNode.classList.remove("front");
+//         first.parentNode.classList.add("back")
 
-        second.parentNode.classList.remove("flipped");
-        second.parentNode.classList.remove("front");
-        second.parentNode.classList.add("back");           
+//         second.parentNode.classList.remove("flipped");
+//         second.parentNode.classList.remove("front");
+//         second.parentNode.classList.add("back");           
 
 
-      first = null;
-    second = null;
-    }, 1000);
-}
+//       first = null;
+//     second = null;
+//     }, 1000);
+// }
 
-let first = null;
-let second = null;
-
-function handleClick(e) {
-    const li = e.target;
-    console.log(li);
-    if (li.matches("ul li")) {
+const div = document.querySelector(".card");
+    function handleFlip(e) {
+        const card = e.target.parentNode;
         
-        const img = li.children[0]; 
-
-        if (!first) {
-            first = img;            
-            console.log(first);
-            first.parentNode.classList.remove("back")
-            first.classList.add("first_card")
-            first.parentNode.classList.add("front")  
-            first.parentNode.classList.add("flipped")  
-
-        }
-        else if (!second) {
-            second = img;
-            second.parentNode.classList.remove("back")
-            second.parentNode.classList.add("front") 
-            second.parentNode.classList.add("flipped") 
-            
-
-            if (first.src === second.src && !(second.classList.contains("first_card"))) {
-                console.log("jo:", first, second);    
-                first.classList.remove("first_card");
-                first = null;
-                second = null;
-            }            
-
-              
-            else if (first.src === second.src && second.classList.contains("first_card")) {
-                console.log("ugyan az a kártya");
-                second = null;      
-            }          
-            else{
-                first.classList.remove("first_card");
-                console.log("nemjo:", first, second);
-                unflip();    
-            }
-        }
+        const front = card.children[0];
+        const back = card.children[1];
+        
+        front.classList.add("flipped");
+        back.classList.remove("flipped");
+        setTimeout(() => {
+            back.classList.add("flipped");
+            front.classList.remove("flipped");
+        }, 1000);
     }
-}
   
 
 function Difficulty(){
@@ -127,7 +95,7 @@ function ShowCards(cardsarray){
     cards.innerHTML = ``;
     for(i = 0; i < cardsarray.length; i++){
         console.log(`<li><img src="Kepek/${cardsarray[i]}.png"></li>`)
-        cards.innerHTML += `<li class="back"><img src="Kepek/${cardsarray[i]}.png"> <div></div> </li>`
+        cards.innerHTML += `<li class="card"> <div class="front"></div> <div class="back flipped"> <img src="Kepek/${cardsarray[i]}.png"></div></li>`
     }
 }
 
