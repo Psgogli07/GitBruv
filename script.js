@@ -39,7 +39,7 @@ function handleClick(e) {
     console.log(li);
     if (li.matches("ul li")) {
         
-        const img = li.children[0];
+        const img = li.children[0]; 
 
         if (!first) {
             first = img;            
