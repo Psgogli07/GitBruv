@@ -1,16 +1,19 @@
-let difficulty = 0;
-let cardnumber = 0;
-let startTime;
-let timerInterval;
-let errorCount = 0;
-label = document.querySelector("label")
+// let difficulty = 0;
+// let startTime;
+// let timerInterval;
+// let errorCount = 0;
+const Datas = {
+    difficulty: 0,
+    startTime,
+    timerInterval,
+    errorCount: 0
+}
 
 
-
-function StartGame(){
+function StartGame(cardnumber){
     if(difficulty != 0){
         const ul = document.querySelector("ul");
-        GenerateCards();
+        GenerateCards(cardnumber);
         ShowALL()
         startTimer();
         ul.addEventListener("click", handleFlip);  
@@ -76,19 +79,20 @@ function revealAndRemovePair(card1, card2) {
 
 
 function startTimer() {
-    startTime = Date.now();
-    timerInterval = setInterval(updateTimer, 1000);
+    Datas.startTime = Date.now();
+    Datas.timerInterval = setInterval(updateTimer, 1000);
 }
 
 function updateTimer() {
     const now = Date.now();
-    const elapsedTime = Math.floor((now - startTime) / 1000);
+    const elapsedTime = Math.floor((now - Datas.startTime) / 1000);
     document.querySelector("#timer").innerHTML = `<div>Idő: ${elapsedTime} mp</div>`;
 }
 // -------------------------------------- megmutatja az osszeset -------------------------------------
 
-let firstCard = null;
-let secondCard = null;
+// let firstCard = null;
+// let secondCard = null;
+const activeCards = { firstCard: null, secondCard: null }
 let lockBoard = false;
 
 function ShowALL() {
@@ -113,7 +117,6 @@ function ShowALL() {
         lockBoard = false; 
     }, 3000); 
 }
-
 //------------------- forditas ---------------------------------------
 
 function handleFlip(e) {
@@ -128,10 +131,10 @@ function handleFlip(e) {
     front.classList.add("flipped");
     back.classList.remove("flipped");
 
-    if (!firstCard) {
-        firstCard = card;
+    if (!activeCards.firstCard) {
+        activeCards.firstCard = card;
     } else {
-        secondCard = card;
+        activeCards.secondCard = card;
         lockBoard = true; 
 
         checkForMatch();
@@ -144,18 +147,17 @@ restartButton.addEventListener("click", RestartGame);
 function RestartGame() {
     location.reload();
 }
-
 //-------------------------------- megnezi hogy uygan az e -----------------------------------------
 
 function checkForMatch() {
-    const firstImage = firstCard.querySelector("img").src;
-    const secondImage = secondCard.querySelector("img").src;
+    const firstImage = activeCards.firstCard.querySelector("img").src;
+    const secondImage = activeCards.secondCard.querySelector("img").src;
 
     if (firstImage === secondImage) {
         console.log("jó!");
         setTimeout(() => {
-            firstCard.style.visibility = "hidden";
-            secondCard.style.visibility = "hidden";
+            activeCards.firstCard.style.visibility = "hidden";
+            activeCards.secondCard.style.visibility = "hidden";
             if (document.querySelectorAll(".card[style='visibility: hidden;']").length === cardnumber) {
                 clearInterval(timerInterval);
                 document.querySelector("#restart").style.display = "block";
@@ -164,9 +166,9 @@ function checkForMatch() {
         }, 500);
     } else {
         console.log("nem jó!");
-        errorCount++;
-        console.log(`Hibák száma: ${errorCount}`);
-        document.querySelector("#errors").innerHTML = `<div>Hibák: ${errorCount}</div>`;
+        Datas.errorCount++;
+        console.log(`Hibák száma: ${Datas.errorCount}`);
+        document.querySelector("#errors").innerHTML = `<div>Hibák: ${Datas.errorCount}</div>`;
         setTimeout(() => {
             unflipCards();
         }, 1000);
@@ -174,11 +176,11 @@ function checkForMatch() {
 }
 
 function unflipCards() {
-    const firstFront = firstCard.querySelector(".front");
-    const firstBack = firstCard.querySelector(".back");
+    const firstFront = activeCards.firstCard.querySelector(".front");
+    const firstBack = activeCards.firstCard.querySelector(".back");
 
-    const secondFront = secondCard.querySelector(".front");
-    const secondBack = secondCard.querySelector(".back");
+    const secondFront = activeCards.secondCard.querySelector(".front");
+    const secondBack = activeCards.secondCard.querySelector(".back");
 
     firstFront.classList.remove("flipped");
     firstBack.classList.add("flipped");
@@ -190,8 +192,8 @@ function unflipCards() {
 }
 
 function resetBoard() {
-    firstCard = null;
-    secondCard = null,
+    activeCards.firstCard = null;
+    activeCards.secondCard = null,
     lockBoard = false;
 }
 
@@ -202,24 +204,23 @@ function Difficulty(){
           difficulty = radio.value;
         }
     }
-
-    if(difficulty == 1){
+    const cardnumber = 0;
+    if(Datas.difficulty == 1){
         cardnumber = 8
-    }else if(difficulty == 2){
+    }else if(Datas.difficulty == 2){
         cardnumber = 12
     }
-    else if(difficulty == 3){
+    else if(Datas.difficulty == 3){
         cardnumber = 14
-    }
-    
-    StartGame();
+    }   
+    StartGame(cardnumber);
 }
 
 function randint(a, b) {
     return Math.floor(Math.random() * (b-a+1)) + a;
 }
 
-function GenerateCards(){
+function GenerateCards(cardnumber){
     let cardsarray = [];
     for(let i = 1; i < cardnumber/2+1; i++){
         cardsarray.push(i)
