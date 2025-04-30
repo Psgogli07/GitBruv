@@ -123,7 +123,10 @@ function endGame() {
 
 function saveGameData(gameData) {
     try {
-        const allGames = JSON.parse(localStorage.getItem("games"));
+        let allGames = JSON.parse(localStorage.getItem("games"));
+        if (allGames === null) {
+            allGames = [];
+        }
         allGames.push(gameData);
         localStorage.setItem("games", JSON.stringify(allGames));
 

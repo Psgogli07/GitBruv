@@ -2,6 +2,7 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="statscss.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statisztikák</title>
 </head>
@@ -16,7 +17,7 @@
     <input type="text" id="emailFilter" placeholder="Szűrés email alapján">
     <button onclick="filterStats()">Szűrés</button>
 
-    <table border="1" id="statsTable">
+    <table  id="statsTable">
         <thead>
             <tr>
                 <th>Email</th>
@@ -39,7 +40,7 @@
         <option value="3">Nehéz</option>
     </select>
 
-    <table border="1" id="leaderboardTable">
+    <table id="leaderboardTable">
         <thead>
             <tr>
                 <th>Email</th>

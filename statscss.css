@@ -1,0 +1,273 @@
+/* Stats Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  #stats-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #4a6fa5;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #4a6fa5;
+  }
+  
+  #filter-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  #filter-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #4a6fa5;
+  }
+  
+  #emailFilter {
+    padding: 8px 12px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  #statsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  #statsTable thead {
+    background-color: #4a6fa5;
+    color: white;
+  }
+  
+  #statsTable th {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  #statsTable td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #statsTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  #statsTable tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    #stats-container {
+      padding: 15px;
+    }
+    
+    #statsTable th, 
+    #statsTable td {
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Button styles consistent with your game */
+  .button {
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+    margin-top: 10px;
+  }
+  
+  .button:hover {
+    background-color: #3a5a8f;
+  }
+
+  /* Leaderboard Page Styles */
+#leaderboard-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #leaderboard-container h1 {
+    color: #4a6fa5;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #4a6fa5;
+  }
+  
+  /* Szűrő konténer - ugyanaz mint a stats-nál */
+  #leaderboard-filter {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  #leaderboard-filter label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #4a6fa5;
+  }
+  
+  #leaderboardTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  #leaderboardTable thead {
+    background-color: #4a6fa5;
+    color: white;
+  }
+  
+  #leaderboardTable th {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  #leaderboardTable td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #leaderboardTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  #leaderboardTable tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Top 3 kiemelése */
+  #leaderboardTable tr.rank-1 {
+    background-color: rgba(255, 215, 0, 0.2) !important;
+    border-left: 4px solid gold;
+  }
+  
+  #leaderboardTable tr.rank-2 {
+    background-color: rgba(192, 192, 192, 0.2) !important;
+    border-left: 4px solid silver;
+  }
+  
+  #leaderboardTable tr.rank-3 {
+    background-color: rgba(205, 127, 50, 0.2) !important;
+    border-left: 4px solid #cd7f32;
+  }
+  
+  /* Rang ikonok */
+  .rank-icon {
+    font-weight: bold;
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    margin-right: 5px;
+  }
+  
+  .rank-1 .rank-icon {
+    color: gold;
+  }
+  
+  .rank-2 .rank-icon {
+    color: silver;
+  }
+  
+  .rank-3 .rank-icon {
+    color: #cd7f32;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    #leaderboard-container {
+      padding: 15px;
+    }
+    
+    #leaderboardTable th, 
+    #leaderboardTable td {
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+    
+    /* Kisebb képernyőn elrejtjük a kevésbé fontos oszlopokat */
+    #leaderboardTable td:nth-child(4),
+    #leaderboardTable th:nth-child(4) {
+      display: none;
+    }
+  }
+  
+  /* Gomb stílusok - ugyanazok mint máshol */
+  .leaderboard-button {
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+    margin-top: 10px;
+  }
+  
+  .leaderboard-button:hover {
+    background-color: #3a5a8f;
+  }
+
+  /* Navigation Styles */
+#nav {
+    background-color: #4a6fa5;
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  #nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 25px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  
+  #nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Active link styling - subtle highlight */
+  #nav a[href="stats.html"] {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+  }
