@@ -23,8 +23,6 @@ ul {
   size: 50%;
 }
 
-
-
 .card {
   cursor: pointer;
   width: 200px;
@@ -32,6 +30,8 @@ ul {
   position: relative;
   transform-style: preserve-3d; /* 3D animáció */
   overflow: hidden;
+  border-radius: 7%;
+
 }
 
 .card * {
@@ -59,4 +59,206 @@ ul {
 
 ul li.flipped img.front {
   opacity: 1;
+}
+
+@media (max-width: 650px) {
+  ul {
+    grid-template-columns: repeat(4, 1fr); /* 4 kártya egy sorban */
+  }
+  
+  .card {
+    width: 100%; /* Teljes szélességű a cellában */
+    height: auto; /* Magasság automatikus */
+    aspect-ratio: 1/1; /* Mindig négyzet alakú */
+    max-width: 120px; /* Maximum méret */
+    max-height: 120px; /* Maximum méret */
+  }
+}
+
+/* header*/
+
+header {
+  background: #4a6fa5;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0 0 10px 0;
+  font-size: 34px;
+}
+
+#userdata_form {
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+#userdata_form label {
+  display: block;
+  margin-bottom: 8px;
+  color: white;
+}
+
+#userdata_form input {
+  padding: 6px 10px;
+  border-radius: 4px;
+  width: 70%;
+}
+
+#userdata_form button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Form eltűnik*/
+header.hidden {
+  display: none;
+}
+
+/* Fő konténer stílusok */
+#Maindiv {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Kontroll panel (felső rész) */
+#controls-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#nav {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+#nav a {
+  color: #4a6fa5;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+#nav a:hover {
+  text-decoration: underline;
+}
+
+/* Kártyák konténere (alsó rész) */
+#game-container {
+  width: 100%;
+
+}
+
+
+#difficulty {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#difficulty label {
+  display: inline-block;
+  margin: 5px 10px;
+  cursor: pointer;
+}
+
+button {
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #3a5a8f;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+#kezdo {
+  background-color: #ff6b6b;
+  font-weight: bold;
+  display: block;
+  margin: 10px auto;
+}
+
+
+#timer, #errors {
+  text-align: center;
+  font-size: 18px;
+  margin: 10px 0;
+  color: #4a6fa5;
+  font-weight: bold;
+}
+
+#cards {
+  margin: 0;
+  padding: 0;
+}
+
+/* footer */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+main {
+  flex: 1;
+  padding-bottom: 20px;
+}
+
+/* Footer stílusok */
+footer {
+  background: #4a6fa5;
+  color: white;
+  padding: 12px 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border-top: 1px solid #3a5a8f;
+  width: 100%;
+}
+
+footer p {
+  margin: 3px 0;
+  line-height: 1.4;
+}
+
+#ability.runaway, #showall.runaway {
+  animation: runaway 2s forwards;
+
+}
+
+@keyframes runaway {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
 }
